@@ -6,10 +6,14 @@ def drawFood():
     pygame.draw.rect(wind,food_color,food_rect)
 
 def drawSnake():
-    snake_color = pygame.Color(60,215,60)
-    for cell in snake:
+    head_color = pygame.Color(60,130,60)
+    for i,cell in enumerate(snake):
         cell_rect = pygame.Rect((cell[0]*tile_w, cell[1]*tile_h),(tile_w,tile_w))
-        pygame.draw.rect(wind, snake_color,cell_rect)
+        if i == 0:
+            pygame.draw.rect(wind, head_color,cell_rect)
+        else:
+            pygame.draw.rect(wind, pygame.Color(60,150+(i*3),60),cell_rect)
+
 
 def updateSnake(direction):
     global food
